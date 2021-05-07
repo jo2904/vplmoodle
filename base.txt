@@ -58,6 +58,19 @@ voir faille CVE-2017-1000366
 
 ########################################################
 
+1) Un utilisateur appuie sur le bouton «évaluer» lié à une soumission.
+2) Le système met en package les fichiers soumis plus les «fichiers d'exécution» (ensemble de fichiers définis dans l'activité VPL) et les scripts personnalisés ou par défaut pour les actions «exécuter» et «évaluer».
+3) Le système sélectionne un serveur d'exécution.
+4) Le système envoie le package au serveur d'exécution
+5) Le serveur d'exécution crée un répertoire personnel pour un utilisateur temporaire et y décompresse les fichiers.
+6) Étape de compilation: Le serveur d'exécution exécute le script vpl_evaluate.sh.
+7) si vpl_evaluate.sh génère le programme vpl_execution passe à l'étape suivante.
+8) Le système supprime tous les "fichiers d'exécution" (ensemble de fichiers définis dans l'activité VPL) mais pas les fichiers dans "Fichiers à conserver lors de l'exécution" (paramètre avancé de l'activité VPL)
+9) Étape d'exécution: le système exécute vpl_execution (le programme de test) et traite la sortie pour générer un rapport et une note.
+10) Les systèmes suppriment le répertoire personnel et l'utilisateur temporaire. 
+
+########################################################
+
 >>> os.system("ls -la")                                                         
 total 40                                                                        
 drwx------ 2 p11467 p11467   160 mai    3 18:03 .                               
