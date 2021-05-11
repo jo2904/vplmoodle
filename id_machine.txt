@@ -1,0 +1,88 @@
+Vpl moodle 
+
+########################################################
+			IDENTIFICATION DE LA MACHINE
+########################################################
+lsb_release
+==>
+Distributor ID: Debian                                                          
+Description:    Debian GNU/Linux 10 (buster)                                    
+Release:        10                                                              
+Codename:       buster
+
+Actuellement, la distribution "stable" de Debian est la version 10, nom de code Buster. 
+Elle a été initialement publiée en tant que version 10 le 6 juillet 2019 et sa dernière mise à jour, version 10.9, a été publiée le 27 mars 2021. 
+
+whoami
+==> Linux
+
+hostname
+==> Traverse
+
+machien-id
+==> 721bcfb5908045f68f79cdce979258af
+
+la lecture (partielle) de /etc/passwd nous indique qu'il y a de nombreux utilisateurs tel que 
+cat /etc/passwd
+==> 
+.....
+p11999:*:11999:11999:prisoner 11999:/home/p11999:/bin/bash
+ ||   ||   ||    ||        ||			|| 			||
+user  mdp  uid  gid       info		home dir		cmd
+
+il y a aussi l'admin 
+cat /etc/passwd | grep -v "prisoner"
+==> root:*:0:0:root:/root:/bin/bash
+
+########################################################
+			   IDENTIFICATION DU RESEAU
+########################################################
+
+	#PUBLIQUE
+
+host myip.opendns.com resolver1.opendns.com | grep "myip.opendns.com has"
+==> 185.126.228.92
+
+IP publique localisée à Paris appartenant au FAI MOJI SAS
+
+
+traceroute 8.8.8.8
+==>
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets                   
+ 1  * * *                                                                       
+ 2  * * *                                                                       
+ 3  * * *                                                                       
+ 4  * * *                                                                       
+ 5  * * *                                                                       
+ 6  * * *                                                                       
+ 7  * * *                                                                       
+ 8  * * *                                                                       
+ 9  * * *                                                                       
+10  * * *                                                                       
+11  * *^C     
+     
+Pas de résultats intérésssants et d'identification de passerrelle lié à l'absence des droits sockets
+
+	#PRIVE
+
+ip a
+==>
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group defaul
+t qlen 1000                                                                     
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00                       
+    inet 127.0.0.1/8 scope host lo                                              
+       valid_lft forever preferred_lft forever                                  
+    inet6 ::1/128 scope host                                                    
+       valid_lft forever preferred_lft forever                                  
+2: ens192: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group de
+fault qlen 1000                                                                 
+    link/ether 00:50:56:8c:bb:c1 brd ff:ff:ff:ff:ff:ff                          
+    inet 10.4.144.214/20 brd 10.4.159.255 scope global ens192                      <============= ip privé mais pas beaucoup plus d'info              
+       valid_lft forever preferred_lft forever                                  
+    inet6 fe80::250:56ff:fe8c:bbc1/64 scope link                                
+       valid_lft forever preferred_lft forever
+       
+
+
+
+########################################################
